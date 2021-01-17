@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Covid Tracker</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+<style type="text/css">
+  body {
+    background-color: black;
+  }
+
+  .container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .divStyle {
+    border-radius: 20px;
+    height: 100px;
+    width: 200vw;
+  }
+</style>
+
+<body class="mt-4">
+
+  <div class="container">
+    <h1 class="text-center text-white"> <span style="color:red">COVID-19</span> WORLDWIDE DATA</h1>
+  </div>
+
+  <div class="container-fluid">
+    <form method="post" class="d-flex justify-content-center align-items-center mt-5" action="">
+      {% csrf_token %}
+      <select class="form-control" style="width:300px" name="selectedcountry">
+        {% for country in mylist %}
+        <option>{{country}}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" class="btn btn-danger mx-2" name="" />
+    </form>
+  </div>
+
+  <div class="container">
+    <h1 class="text-center text-white my-4">{{selectedcountry}}</h1>
+    <div class="row d-flex justify-content-center align-items-center mt-4 px-5">
+      <div class="container divStyle col-lg-6 mt-3 p-2" style="background-color:whitesmoke;">
+        <h1 class="text-center ">{{population}}</h1>
+        <h5 class="text-center">Population</h5>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center mt-4 px-5">
+      <div class="container divStyle col-lg-3 col-md-2 col-sm-1 mt-3 p-2" style="background-color:skyblue;">
+        <h1 class="text-center ">{{new}}</h1>
+        <h5 class="text-center">New</h5>
+      </div>
+      <div class="container divStyle col-lg-3 col-md-2 col-sm-1 mt-3 p-2" style="background-color:yellow;">
+        <h1 class="text-center ">{{active}}</h1>
+        <h5 class="text-center ">Active</h5>
+      </div>
+      <div class="container divStyle col-lg-3 col-md-2 col-sm-1 mt-3 p-2" style="background-color:gray;">
+        <h1 class="text-center ">{{death}}</h1>
+        <h5 class="text-center ">Deaths</h5>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center align-items-center px-5">
+      <div class="container divStyle col-lg-3 col-md-2 col-sm-1 mt-3 p-2" style="background-color:red;">
+        <h1 class="text-center text-white">{{critical}}</h1>
+        <h5 class="text-center text-white">Critical</h5>
+      </div>
+      <div class="container divStyle col-lg-3 col-md-2 col-sm-1 mt-3 p-2" style="background-color:green;">
+        <h1 class="text-center text-white">{{recovered}}</h1>
+        <h5 class="text-center text-white">Recovered</h5>
+      </div>
+      <div class="container divStyle col-lg-3 col-md-2 col-sm-1 mt-3 p-2" style="background-color:orange; ">
+        <h1 class="text-center  ">{{total}}</h1>
+        <h5 class="text-center ">Total Cases</h5>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-center mt-5" style="color: gray;">Developed By <span style="color:white">Chetan
+      Patil</span></p>
+
+</body>
+
+</html>
